@@ -1,19 +1,20 @@
-$.ajax({
-    url: "",
-    type: "POST",
-    data: {
-        id: $("#id").value,
-        name: $("#name").value,
-        email: $("#email").value,
-        birth: $("#date").value,
-        gpa: $("#gpa").value,
-        mobile_number: $("#mobile").value,
-        gender: $("input[name = 'gender']:checked").value,
-        level: $("input[name = 'level']:checked").value,
-        status: $("input[name = 'status']:checked").value,
-        department: $("input[name = 'department']:checked").value,
-    },
-    beforeSend: function (xhr) {
-        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-    },
-});
+document.getElementById("button").onclick = function() {
+    var xhtml= new XMLHttpRequest();
+    let datatab = [
+        name= nameInput.value(),
+        emai =emailInput.value(),
+        mobile_number = mobileInput.value(),
+        birth = dateInput.value(),
+        gpa = gpaInput.value(),
+        gender = data.gender,
+        level = data.level,
+        status = data.status,
+        department = data.department, 
+    ]
+xhtml.open("POST","manage.py");
+xhtml.onreadystatechange =function() {
+    if(this.readyState==4 && this.status==200){
+        xhtml.send(data);
+    }
+};
+}
